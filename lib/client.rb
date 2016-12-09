@@ -1,21 +1,21 @@
 class Client
 
-  attr_reader(:name, :id, :stylist_id)
+  attr_reader(:id, :name, :stylist_id)
 
   define_method(:initialize) do |attributes|
-    @name = attributes.fetch(:name)
     @id = attributes.fetch(:id)
+    @name = attributes.fetch(:name)
     @stylist_id = attributes.fetch(:stylist_id)
   end
 
-  define_method(:all) do
+  define_singleton_method(:all) do
     returned_clients = DB.exec("SELECT * FROM clients;")
     clients = []
     returned_clients.each do |client|
       id = client.fetch("id").to_i
       name = client.fetch("name")
-      stylist_id = client.fetch("stylist_id")
-      clients.push(:name => name, :id => id, :stylist_id => stylist_id)
+      stylist_id = client.fetch("stylist_id").to_i
+      clients.push(:id => id, :name => name, :stylist_id => stylist_id)
     end
     clients
   end
@@ -26,6 +26,6 @@ class Client
   end
 
   define_method(:==) do |another_client|
-    self.name == another
+    (self.name) == (another_client.name) && (self.stylist_id) == (another_client.stylist_id) && (self.id) == (another_client.id)
   end
 end

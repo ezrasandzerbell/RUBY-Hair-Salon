@@ -7,7 +7,7 @@ class Stylist
     @id = attributes.fetch(:id)
   end
 
-  define_method(:all) do
+  define_singleton_method(:all) do
     returned_stylists = DB.exec("SELECT * FROM stylists;")
     stylists = []
     returned_stylists.each do |stylist|
@@ -24,7 +24,7 @@ class Stylist
   end
 
   define_method(:==) do |another_stylist|
-    self.name == another_stylist.name & self.id == another_stylist.id
+    self.name == another_stylist.name && self.id == another_stylist.id
   end
 
   define_method(:find) do |id|
