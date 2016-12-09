@@ -17,4 +17,12 @@ describe('tests stylist form input and successful implementation of if/then stat
     click_button("Register new stylist")
     expect(page).to have_content("Edward Scissorhands")
   end
+
+  it('tests for presence of clientsstylist name appended') do
+    visit ('/')
+    fill_in("stylist_name", :with => "Edward Scissorhands")
+    click_button("Register new stylist")
+    click_link("Edward Scissorhands")
+    expect(page).to have_content("You have not entered a client yet.")
+  end
 end
