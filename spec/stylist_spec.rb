@@ -42,7 +42,6 @@ describe(Stylist) do
     end
   end
 
-
   describe('.find') do
     it('finds a stylist by id') do
       stylist1 = Stylist.new(:id => nil, :name => "biscuit")

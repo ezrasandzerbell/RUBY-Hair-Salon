@@ -1,0 +1,10 @@
+<h1>Create your hair salon</h1>
+
+<h2>Available stylists:</h2>
+<% if @stylists == [] %>
+  <p>You have not entered a stylist yet. Please do so in the form below</p>
+<% else %>
+  <% @stylists.each do |stylist| %>
+    <a href=""><% stylist %></a>
+  <% end %>
+<% end %>
