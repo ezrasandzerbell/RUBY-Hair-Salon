@@ -24,6 +24,14 @@ describe(Client) do
     end
   end
 
+  describe('#==') do
+    it('tests for equivalence, omiting Class instance id') do
+      client1 = Client.new(:name => "biscuit", :stylist_id => 3)
+      client2 = Client.new(:name => "biscuit", :stylist_id => 3)
+      expect(client1 == client2).to(eq(true))
+    end
+  end
+
   describe('#save') do
     it('returns saved content from the database') do
       client1 = Client.new(:name => "biscuit", :stylist_id => 3)
