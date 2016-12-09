@@ -3,7 +3,7 @@ require('spec_helper')
 describe(Client) do
 
   before() do
-    @client = Client.new({:id => nil, :name => "Abigail", :stylist_id => "1"})
+    @client = Client.new({:id => nil, :name => "Abigail", :stylist_id => 1})
   end
 
   describe('#all') do
@@ -17,6 +17,13 @@ describe(Client) do
       expect(@client.name).to(eq("Abigail"))
     end
   end
+
+  describe('#stylist_id') do
+    it('returns id of clients stylist') do
+      expect(@client.stylist_id).to(eq(1))
+    end
+  end
+
   #
   # describe('#save') do
   #   it('returns saved content from the database') do
