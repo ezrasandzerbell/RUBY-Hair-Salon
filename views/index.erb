@@ -4,7 +4,16 @@
 <% if @stylists == [] %>
   <p>You have not entered a stylist yet. Please do so in the form below</p>
 <% else %>
-  <% @stylists.each do |stylist| %>
-    <a href=""><% stylist %></a>
-  <% end %>
+
+  <ul>
+    <% @stylists.each do |stylist| %>
+      <li><a href="/stylist/<%= stylist.id %>"><%= stylist.name %></a></li>
+    <% end %>
+  </ul>
+
 <% end %>
+
+<form action="/stylist" method="post">
+  <input type="text" name="stylist_name" id="stylist_name" placeholder="enter stylist's name here">
+  <button type="submit" class="btn btn-primary">Register new stylist</button>
+</form>

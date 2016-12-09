@@ -1,0 +1,18 @@
+<h3> Registered clients: </h3>
+
+<% if @stylist.clients == [] %>
+  <p>You have not entered a client yet. Please do so in the form below</p>
+<% else %>
+  <ul>
+  <% @stylist.clients.each do |client| %>
+    <li><% client %></li>
+  <% end %>
+  </ul>
+<% end %>
+
+<form action="/client" method="post">
+  <input type="hidden" name="stylist_id" id="stylist_id" value="<% @stylist.id %>">
+  <input type="text" name="name" placeholder="enter client's name here">
+  <br>
+  <button type="submit" class="btn btn-primary">Register new client</button>
+</form>
