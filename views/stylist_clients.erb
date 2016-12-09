@@ -1,4 +1,4 @@
-<h3> Registered clients: </h3>
+<h3> Clients currently registered with <%= @stylist.name %>:</h3>
 
 <% if @stylist.clients == [] %>
   <p>You have not entered a client yet. Please do so in the form below</p>
@@ -13,6 +13,8 @@
 <form action="/client" method="post">
   <input class="form-control" type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id %>">
   <input type="text" name="client_name" placeholder="enter client's name here">
-  <br>
+  <br><br>
   <button type="submit" class="btn btn-primary">Register new client</button>
 </form>
+<br>
+<a href="/">Return to Stylists home directory</a>

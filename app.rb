@@ -9,7 +9,7 @@ require('pg')
 DB = PG.connect({:dbname => "hair_salon"})
 
 get('/') do
-  @stylists = []
+  @stylists = Stylist.all()
   erb(:index)
 end
 
