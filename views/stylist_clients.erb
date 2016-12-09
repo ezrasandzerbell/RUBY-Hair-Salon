@@ -5,14 +5,14 @@
 <% else %>
   <ul>
   <% @stylist.clients.each do |client| %>
-    <li><% client %></li>
+    <li><%= client.name %></li>
   <% end %>
   </ul>
 <% end %>
 
 <form action="/client" method="post">
-  <input type="hidden" name="stylist_id" id="stylist_id" value="<% @stylist.id %>">
-  <input type="text" name="name" placeholder="enter client's name here">
+  <input class="form-control" type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id %>">
+  <input type="text" name="client_name" placeholder="enter client's name here">
   <br>
   <button type="submit" class="btn btn-primary">Register new client</button>
 </form>

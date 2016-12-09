@@ -28,8 +28,8 @@ get('/stylist/:id') do
 end
 
 post('/client') do
-  name = params.fetch("name")
-  stylist_id = params.fetch("stylist_id")
+  name = params.fetch("client_name")
+  stylist_id = params.fetch("stylist_id").to_i
   @stylist = Stylist.find(stylist_id)
   client = Client.new(:name => name, :stylist_id => stylist_id)
   client.save
