@@ -38,4 +38,24 @@ class Client
     DB.exec("UPDATE clients SET name = '#{@name}' WHERE id = #{@id};")
   end
 
+  define_singleton_method(:find) do |id|
+    found_client = nil
+    Client.all.each do |client|
+      if client.id() == id
+        found_client = client
+      end
+    end
+    found_client
+  end
+
+  define_singleton_method(:find_clients) do |stylist_id|
+    found_clients = []
+    Clients.all.each do |client|
+      if client.stylist_id() == id
+        found_clients.push(client)
+      end
+    end
+    found_clients
+  end
+
 end
