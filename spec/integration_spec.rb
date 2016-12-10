@@ -42,6 +42,19 @@ describe('tests stylist form input and successful implementation of if/then stat
       fill_in("stylist_name", :with => "Edward Scissorhands")
       click_button("Register new stylist")
       expect(page).to have_content("Edward Scissorhands")
+      click_link("delete stylist")
+      expect(page).to have_content("Success!")
+    end
+  end
+
+  describe('updates target stylist from index list', {:type => :feature}) do
+    it('visits home page, fills out form, and tests for stylist name appended') do
+      visit ('/')
+      fill_in("stylist_name", :with => "Edward Scissorhands")
+      click_button("Register new stylist")
+      expect(page).to have_content("Edward Scissorhands")
+      click_link("update stylist")
+      expect(page).to have_content("Enter a new name")
     end
   end
 end

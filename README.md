@@ -10,6 +10,7 @@
 * _inputs stylist information to database table "stylists"_
 * _draws id from "stylists" table to generate stylist_id for each client_
 * _makes use of if/then statements to hide and show content_
+* _employs the CRUD method (create / read / update / destroy)_ 
 
 ## Setup/Installation Requirements
 

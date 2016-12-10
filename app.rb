@@ -50,8 +50,16 @@ get('/stylist/:id/delete') do
   erb(:success_delete)
 end
 
-get('/stylist/:id/update') do
-  stylist_id = params.fetch("id").to_i
-  @stylist = Stylist.find(stylist_id)
-  erb(:success_update)
+get('/stylist/:id/edit') do
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  erb(:stylist_edit)
+end
+
+
+patch("/stylist/:id/update") do
+  name = params.fetch("name")
+  @stylist = Stylist.find(params.fetch("id").to_i())
+  @stylist.update({:name => name})
+  @stylists = Stylist.all()
+  erb(:index)
 end

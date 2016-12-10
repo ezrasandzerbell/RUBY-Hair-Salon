@@ -13,7 +13,7 @@
           <a href="/stylist/<%= stylist.id %>"><h4><%= stylist.name %></h4></a>
         </div>
         <div class="col-md-4">
-            <a href="/stylist/<%= stylist.id %>/update"><button type="button" class="btn btn-success">update stylist</button></a>
+            <a href="/stylist/<%= stylist.id %>/edit"><button type="button" class="btn btn-success">update stylist</button></a>
         </div>
         <div class="col-md-4">
             <a href="/stylist/<%= stylist.id %>/delete"><button type="button" class="btn btn-danger">delete stylist</button></a>
@@ -25,6 +25,6 @@
 <% end %>
 
 <form action="/stylists" method="post">
-  <input type="text" name="stylist_name" id="stylist_name" placeholder="enter stylist's name here">
+  <input type="text" name="stylist_name" id="stylist_name" placeholder="enter stylist name here">
   <button type="submit" class="btn btn-primary">Register new stylist</button>
 </form>
