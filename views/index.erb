@@ -5,15 +5,26 @@
   <p>You have not entered a stylist yet. Please do so in the form below</p>
 <% else %>
 
-  <ul>
+  <div class="panel panel-default">
     <% @stylists.each do |stylist| %>
-      <li><a href="/stylist/<%= stylist.id %>"><%= stylist.name %></a></li>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-4">
+          <a href="/stylist/<%= stylist.id %>"><h4><%= stylist.name %></h4></a>
+        </div>
+        <div class="col-md-4">
+            <a href="/stylist/<%= stylist.id %>/update"><button type="button" class="btn btn-success">update stylist</button></a>
+        </div>
+        <div class="col-md-4">
+            <a href="/stylist/<%= stylist.id %>/delete"><button type="button" class="btn btn-danger">delete stylist</button></a>
+        </div>
+      </div>
+    </div>
     <% end %>
-  </ul>
-
+  </div>
 <% end %>
 
-<form action="/stylist" method="post">
+<form action="/stylists" method="post">
   <input type="text" name="stylist_name" id="stylist_name" placeholder="enter stylist's name here">
   <button type="submit" class="btn btn-primary">Register new stylist</button>
 </form>

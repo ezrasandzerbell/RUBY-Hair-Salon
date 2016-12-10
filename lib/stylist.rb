@@ -49,4 +49,8 @@ class Stylist
     stylist_clients
   end
 
+  define_method(:delete) do
+    DB.exec("DELETE FROM stylists WHERE id = #{@id};")
+  end
+
 end
