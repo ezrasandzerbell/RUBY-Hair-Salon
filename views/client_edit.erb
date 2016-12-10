@@ -1,0 +1,10 @@
+<h1>Enter a new name for <%= @client.name %>:</h1>
+
+<form action="/client/<%= @client.id() %>/update" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input class="form-control" type="hidden" name="stylist_id" id="stylist_id" value="<%= @client.stylist_id %>">
+  <label for="name">Rename your client:</label>
+  <input id="name" name="name" type="text" placeholder="enter name here">
+
+  <button type="submit">Update</button>
+</form>

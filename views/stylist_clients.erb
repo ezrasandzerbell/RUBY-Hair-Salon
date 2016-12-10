@@ -1,23 +1,23 @@
 <h3> Clients currently registered with <%= @stylist.name %>:</h3>
 
-<% if @stylist.clients == [] %>
+<% if @clients == [] %>
 
   <p>You have not entered a client yet. Please do so in the form below</p>
 
 <% else %>
 
 <div class="panel panel-default">
-  <% @stylist.clients.each do |client| %>
+  <% @clients.each do |client| %>
     <div class="panel-body">
       <div class="row">
         <div class="col-md-4">
           <h4><%= client.name %></h4>
         </div>
         <div class="col-md-4">
-            <a href="/client/<%= client.id %>/edit"><button type="button" class="btn btn-success">update client</button></a>
+          <a href="/client/<%=client.id%>/edit"><button type="button" class="btn btn-success">update client</button></a>
         </div>
         <div class="col-md-4">
-            <a href="/client/<%= client.id %>/delete"><button type="button" class="btn btn-danger">delete client</button></a>
+          <a href="/client/<%=client.id%>/delete"><button type="button" class="btn btn-danger">delete client</button></a>
         </div>
       </div>
     </div>
@@ -25,7 +25,7 @@
 <% end %>
 
 
-<form action="/client" method="post">
+<form action="/stylist/<%= @stylist.id %>/clients" method="post">
   <input class="form-control" type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id %>">
   <input type="text" name="client_name" placeholder="enter client's name here">
   <br><br>

@@ -3,7 +3,7 @@ require('spec_helper')
 describe(Client) do
 
   before() do
-    @client = Client.new(:name => "Abigail", :stylist_id => 1)
+    @client = Client.new(:id => nil, :name => "Abigail", :stylist_id => 1)
   end
 
   describe('#all') do
@@ -26,18 +26,29 @@ describe(Client) do
 
   describe('#==') do
     it('tests for equivalence, omiting Class instance id') do
-      client1 = Client.new(:name => "biscuit", :stylist_id => 3)
-      client2 = Client.new(:name => "biscuit", :stylist_id => 3)
+      client1 = Client.new(:id => nil, :name => "biscuit", :stylist_id => 3)
+      client2 = Client.new(:id => nil, :name => "biscuit", :stylist_id => 3)
       expect(client1 == client2).to(eq(true))
     end
   end
 
   describe('#save') do
     it('returns saved content from the database') do
-      client1 = Client.new(:name => "biscuit", :stylist_id => 3)
-      client2 = Client.new(:name => "Charlie", :stylist_id => 2)
+      client1 = Client.new(:id => nil, :name => "biscuit", :stylist_id => 3)
+      client2 = Client.new(:id => nil, :name => "Charlie", :stylist_id => 2)
       client2.save
       expect(Client.all).==([client2])
+    end
+  end
+
+  describe('#id') do
+    it('tests for id of a client') do
+      client1 = Client.new(:id => nil, :name => "biscuit", :stylist_id => 3)
+      client1.save
+      client2 = Client.new(:id => nil, :name => "biscuit", :stylist_id => 3)
+      client2.save
+      client2_id = client2.id.to_i
+      expect(client2_id).to(be_an_instance_of(Fixnum))
     end
   end
 end

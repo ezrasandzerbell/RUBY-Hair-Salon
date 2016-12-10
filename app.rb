@@ -30,7 +30,9 @@ end
 
 get('/stylist/:id') do
   stylist_id = params.fetch("id").to_i
-  @stylist = Stylist.find(stylist_id)
+  stylist = Stylist.find(stylist_id)
+  @clients = stylist.clients
+  @stylist = stylist
   erb(:stylist_clients)
 end
 
@@ -42,25 +44,35 @@ patch("/stylist/:id/update") do
   erb(:index)
 end
 
-post('/client') do
+post('/stylist/:id/clients') do
   name = params.fetch("client_name")
   stylist_id = params.fetch("stylist_id").to_i
   @stylist = Stylist.find(stylist_id)
-  client = Client.new(:name => name, :stylist_id => stylist_id)
+  client = Client.new(:id => nil, :name => name, :stylist_id => stylist_id)
   client.save
+  @clients = Client.all
   erb(:stylist_clients)
 end
 
-post('/client/:id/update') do
-  client_id = params.fetch("").to_i
-  @client = Client.find(client_id)
+get('/client/:id/edit') do
+  @client = Client.find(params.fetch("id").to_i)
+  erb(:client_edit)
 end
 
-post('/client/:id/delete') do
-  client_id = params.fetch("").to_i
-  client = Client.find(client_id)
-  client.delete
-  erb(:success_delete)
+patch("/client/:id/update") do
+  name = params.fetch("name")
+  client = Client.find(params.fetch("id").to_i())
+  client.update({:name => name})
+  @clients = Client.all()
+  stylist_id = params.fetch("stylist_id").to_i
+  @stylist = Stylist.find(stylist_id)
+  erb(:stylist_clients)
+end
+
+get('/client/:id/delete') do
+  @client = Client.find(params.fetch("id").to_i)
+  @client.delete
+  erb(:success_delete_client)
 end
 
 get('/stylist/:id/delete') do
