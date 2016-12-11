@@ -17,7 +17,11 @@
           <a href="/client/<%=client.id%>/edit"><button type="button" class="btn btn-success">update client</button></a>
         </div>
         <div class="col-md-4">
-          <a href="/client/<%=client.id%>/delete"><button type="button" class="btn btn-danger">delete client</button></a>
+          <form action="/clients/<%= client.id() %>" method="post">
+             <input class="form-control" type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id %>">
+             <input name="_method" type="hidden" value="delete">
+             <button type="submit" class="btn btn-danger">delete client</button>
+           </form>
         </div>
       </div>
     </div>
@@ -25,7 +29,7 @@
 <% end %>
 
 
-<form action="/stylist/<%= @stylist.id %>/clients" method="post">
+<form action="/clients" method="post">
   <input class="form-control" type="hidden" name="stylist_id" id="stylist_id" value="<%= @stylist.id %>">
   <input type="text" name="client_name" placeholder="enter client's name here">
   <br><br>

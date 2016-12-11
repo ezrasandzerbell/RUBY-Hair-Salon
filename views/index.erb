@@ -16,7 +16,10 @@
             <a href="/stylist/<%= stylist.id %>/edit"><button type="button" class="btn btn-success">update stylist</button></a>
         </div>
         <div class="col-md-4">
-            <a href="/stylist/<%= stylist.id %>/delete"><button type="button" class="btn btn-danger">delete stylist</button></a>
+          <form action="/stylists/<%= stylist.id() %>" method="post">
+             <input name="_method" type="hidden" value="delete">
+             <button type="submit" class="btn btn-danger">delete stylist</button>
+           </form>
         </div>
       </div>
     </div>

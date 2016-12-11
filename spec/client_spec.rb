@@ -41,6 +41,7 @@ describe(Client) do
     end
   end
 
+
   describe('#id') do
     it('tests for id of a client') do
       client1 = Client.new(:id => nil, :name => "biscuit", :stylist_id => 3)
