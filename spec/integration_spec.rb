@@ -42,8 +42,8 @@ describe('tests stylist form input and successful implementation of if/then stat
       fill_in("stylist_name", :with => "Edward Scissorhands")
       click_button("Register new stylist")
       expect(page).to have_content("Edward Scissorhands")
-      click_link("delete stylist")
-      expect(page).to have_content("Success!")
+      click_button("delete stylist")
+      expect(page).to have_content("Register new stylist")
     end
   end
 
